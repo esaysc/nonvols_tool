@@ -1,0 +1,94 @@
+import pandas as pd
+import re
+import xlrd
+from xlutils.copy import copy
+
+def parse_feedback_data(text):
+    # 提取人名和其后的畜禽信息
+    # 格式：姓名：信息
+    lines = text.strip().split('\n')
+    final_data = {}
+    
+    for line in lines:
+        if '：' in line:
+            name, info = line.split('：', 1)
+            name = name.strip()
+            
+            def extract_count(patterns, text):
+                total = 0
+                for p in patterns:
+                    matches = re.findall(p, text)
+                    for m in matches:
+                        if isinstance(m, tuple):
+                            for group in m:
+                                if group:
+                                    total += int(group)
+                        elif m:
+                            total += int(m)
+                return total
+
+            ji = extract_count([r'(\d+)\s*只鸡', r'鸡\s*(\d+)\s*只'], info)
+            ya = extract_count([r'(\d+)\s*只鸭', r'鸭\s*(\d+)\s*只', r'甲鸭\s*(\d+)\s*只'], info)
+            e = extract_count([r'(\d+)\s*只鹅', r'鹅\s*(\d+)\s*只'], info)
+
+            final_data[name] = {'鸡': ji, '鸭': ya, '鹅': e}
+            
+    return final_data
+
+def fill_excel(data, input_file, output_file):
+    rb = xlrd.open_workbook(input_file, formatting_info=True)
+    wb = copy(rb)
+    sheet = wb.get_sheet(0)
+    
+    # 负责人列在索引 3
+    # 鸡存栏在索引 12
+    # 鸭存栏在索引 14
+    # 鹅存栏在索引 16
+    # 数据从第 7 行开始
+    
+    start_row = 7
+    current_row = start_row
+    
+    for name, counts in data.items():
+        sheet.write(current_row, 3, name) # 负责人
+        if counts['鸡'] > 0: sheet.write(current_row, 12, counts['鸡'])
+        if counts['鸭'] > 0: sheet.write(current_row, 14, counts['鸭'])
+        if counts['鹅'] > 0: sheet.write(current_row, 16, counts['鹅'])
+        current_row += 1
+        
+    wb.save(output_file)
+    print(f"数据已成功写入 {output_file}")
+
+feedback_text = """
+曹世明：10 只鸡 10 只鸭
+刘柱明：21 只鸡
+刘俊华：14 只鸡 4 只鸭
+程金本：14 只鸡
+周春华：15 只鸡 鸭 15 只
+程文书：10 只鸡 鸭 10 只 鹅 2 只
+程仲良：3 只鸡
+曹永根：13 只鸡 鸭 10 只 鹅 3 只
+刘华良：16 只鸡 鸭 3 只 鹅 3 只
+夏儒明：鹅 3 只
+刘黄根：13 只鸡 鸭 7 只
+刘小全：6 只鸡 鸭 3 只
+刘双全：46 只鸡
+刘金明：40 只鸡 鸭 10 只 鹅 6 只
+刘现文：5 只鸡
+郑勇军：2 只鸡
+刘水文：20 只鸡
+刘柱根：30 只鸡 鸭 25 只 鹅 8 只
+王学文：5 只鸡
+黄建文：20 只鸡 鸭 9 只 鹅 2 只
+刘文成：60 只鸡 鸭 20 只 鹅 7 只
+王元根：26 只鸡 鸭 10 只 鹅 2 只
+李光全：12 只鸡 鸭 5 只
+刘吉元：鸡 17 只，鸭 1 只，鹅 4 只
+程泽群：鸡 4 只、鸭 10 只、鹅 2 只
+李树军：4 只鸡
+"""
+
+if __name__ == "__main__":
+    parsed_data = parse_feedback_data(feedback_text)
+    print("解析到的数据:", parsed_data)
+    fill_excel(parsed_data, '畜禽生产台账空表.xls', '畜禽生产台账_已填充_v2.xls')
