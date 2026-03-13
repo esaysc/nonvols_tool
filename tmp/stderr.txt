@@ -1,1 +1,1 @@
-ERROR: Could not open requirements file: [Errno 2] No such file or directory: 'D:\\projects\\pycharm\\nonvols_tool\\requirements.txt'
+Python was not found; run without arguments to install from the Microsoft Store, or disable this shortcut from Settings > Apps > Advanced app settings > App execution aliases.
