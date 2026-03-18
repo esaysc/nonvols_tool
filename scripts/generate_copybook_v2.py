@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 
 # ===================== 精准配置：8mm 米字格 A4 字帖 =====================
-DPI = 600
+DPI = 300
 A4_W = int(210 * DPI / 25.4)
 A4_H = int(297 * DPI / 25.4)
 
@@ -13,7 +13,7 @@ GRID_SIZE_PX = int(GRID_SIZE_MM * DPI / 25.4)
 
 # A4 排版（左右留边）
 MARGIN = int(15 * DPI / 25.4)  # 1.5cm边距
-TITLE_AREA_HEIGHT = int(30 * DPI / 25.4)  # 标题区域高度 3.5cm
+TITLE_AREA_HEIGHT = int(35 * DPI / 25.4)  # 标题区域高度 3.5cm
 
 COLS = (A4_W - 2 * MARGIN) // GRID_SIZE_PX  # 自动算列数
 ROWS = (A4_H - 2 * MARGIN - TITLE_AREA_HEIGHT) // GRID_SIZE_PX  # 自动算行数
@@ -39,8 +39,6 @@ else:
 GRID_COLOR = "#FF4500"  # 橙红色格线
 TEXT_COLOR = "#808080"  # 灰色文字
 # ==========================================================================
-
-chars = [c for c in text.strip() if c.strip()]
 
 # 字体路径处理
 fonts_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "fonts")
@@ -73,15 +71,29 @@ else:
     font_path = "C:/Windows/Fonts/simkai.ttf"
     print("未在 fonts 目录找到字体，尝试系统字体")
 
-for page in range((len(chars) + COLS * ROWS - 1) // (COLS * ROWS)):
+# 新增功能：选择每个字留 n 个练习格
+try:
+    practice_count = input("每个字后面留几个练习格？(默认 0): ").strip()
+    practice_count = int(practice_count) if practice_count else 0
+except ValueError:
+    print("输入无效，默认不留练习格")
+    practice_count = 0
+
+# 构建最终要绘制的字符列表
+raw_chars = [c for c in text.strip() if c.strip()]
+chars_to_draw = []
+for c in raw_chars:
+    chars_to_draw.append(c)  # 添加原字
+    for _ in range(practice_count):
+        chars_to_draw.append(None)  # 添加练习格标记
+
+for page in range((len(chars_to_draw) + COLS * ROWS - 1) // (COLS * ROWS)):
     img = Image.new("RGB", (A4_W, A4_H), "white")
     draw = ImageDraw.Draw(img)
 
     # 加载字体
     try:
-        # 正文字体
         font = ImageFont.truetype(font_path, int(GRID_SIZE_PX * 0.8))
-        # 标题字体（大号）
         title_font_size = int(TITLE_AREA_HEIGHT * 0.5)
         title_font = ImageFont.truetype(font_path, title_font_size)
     except Exception as e:
@@ -94,7 +106,6 @@ for page in range((len(chars) + COLS * ROWS - 1) // (COLS * ROWS)):
         bbox = draw.textbbox((0, 0), title, font=title_font)
         tw = bbox[2] - bbox[0]
         th = bbox[3] - bbox[1]
-        # 标题在 TITLE_AREA_HEIGHT 区域内居中
         tx = (A4_W - tw) // 2 - bbox[0]
         ty = MARGIN + (TITLE_AREA_HEIGHT - th) // 2 - bbox[1]
         draw.text((tx, ty), title, font=title_font, fill="#000000")
@@ -105,9 +116,9 @@ for page in range((len(chars) + COLS * ROWS - 1) // (COLS * ROWS)):
     # 2. 绘制米字格和正文
     for i in range(COLS * ROWS):
         idx = page * COLS * ROWS + i
-        if idx >= len(chars):
+        if idx >= len(chars_to_draw):
             break
-        c = chars[idx]
+        c = chars_to_draw[idx]
 
         col = i % COLS
         row = i // COLS
@@ -122,30 +133,29 @@ for page in range((len(chars) + COLS * ROWS - 1) // (COLS * ROWS)):
 
         # 米字格虚线
         cx, cy = gx + GRID_SIZE_PX // 2, gy + GRID_SIZE_PX // 2
-        # 对角线
         draw.line([gx, gy, gx + GRID_SIZE_PX, gy + GRID_SIZE_PX], fill=GRID_COLOR, width=1)
         draw.line([gx + GRID_SIZE_PX, gy, gx, gy + GRID_SIZE_PX], fill=GRID_COLOR, width=1)
-        # 十字线
         draw.line([cx, gy, cx, gy + GRID_SIZE_PX], fill=GRID_COLOR, width=1)
         draw.line([gx, cy, gx + GRID_SIZE_PX, cy], fill=GRID_COLOR, width=1)
 
-        # 文字居中
-        try:
-            bbox = draw.textbbox((0, 0), c, font=font)
-            w = bbox[2] - bbox[0]
-            h = bbox[3] - bbox[1]
-            draw.text(
-                (
-                    gx + (GRID_SIZE_PX - w) // 2 - bbox[0],
-                    gy + (GRID_SIZE_PX - h) // 2 - bbox[1],
-                ),
-                c,
-                font=font,
-                fill=TEXT_COLOR,
-            )
-        except:
-            w, h = draw.textsize(c, font=font)
-            draw.text((gx + (GRID_SIZE_PX - w) // 2, gy + (GRID_SIZE_PX - h) // 2), c, font=font, fill=TEXT_COLOR)
+        # 如果不是练习格，则绘制文字
+        if c is not None:
+            try:
+                bbox = draw.textbbox((0, 0), c, font=font)
+                w = bbox[2] - bbox[0]
+                h = bbox[3] - bbox[1]
+                draw.text(
+                    (
+                        gx + (GRID_SIZE_PX - w) // 2 - bbox[0],
+                        gy + (GRID_SIZE_PX - h) // 2 - bbox[1],
+                    ),
+                    c,
+                    font=font,
+                    fill=TEXT_COLOR,
+                )
+            except:
+                w, h = draw.textsize(c, font=font)
+                draw.text((gx + (GRID_SIZE_PX - w) // 2, gy + (GRID_SIZE_PX - h) // 2), c, font=font, fill=TEXT_COLOR)
 
     # 保存文件
     font_name = os.path.splitext(os.path.basename(font_path))[0]
