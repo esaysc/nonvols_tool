@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 
 # ===================== 精准配置：8mm 米字格 A4 字帖 =====================
-DPI = 300
+DPI = 600
 A4_W = int(210 * DPI / 25.4)
 A4_H = int(297 * DPI / 25.4)
 
