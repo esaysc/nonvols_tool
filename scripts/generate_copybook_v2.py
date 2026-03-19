@@ -71,7 +71,15 @@ else:
     font_path = "C:/Windows/Fonts/simkai.ttf"
     print("未在 fonts 目录找到字体，尝试系统字体")
 
-# 新增功能：选择每个字留 n 个练习格
+# 新增功能：选择每个字重复次数和练习格数
+try:
+    repeat_count = input("每个字重复显示几次？(默认 1): ").strip()
+    repeat_count = int(repeat_count) if repeat_count else 1
+    if repeat_count < 1: repeat_count = 1
+except ValueError:
+    print("输入无效，默认重复 1 次")
+    repeat_count = 1
+
 try:
     practice_count = input("每个字后面留几个练习格？(默认 0): ").strip()
     practice_count = int(practice_count) if practice_count else 0
@@ -83,9 +91,12 @@ except ValueError:
 raw_chars = [c for c in text.strip() if c.strip()]
 chars_to_draw = []
 for c in raw_chars:
-    chars_to_draw.append(c)  # 添加原字
+    # 添加重复的字
+    for _ in range(repeat_count):
+        chars_to_draw.append(c)
+    # 添加练习格标记
     for _ in range(practice_count):
-        chars_to_draw.append(None)  # 添加练习格标记
+        chars_to_draw.append(None)
 
 for page in range((len(chars_to_draw) + COLS * ROWS - 1) // (COLS * ROWS)):
     img = Image.new("RGB", (A4_W, A4_H), "white")
