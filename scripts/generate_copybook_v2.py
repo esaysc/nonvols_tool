@@ -13,7 +13,7 @@ GRID_SIZE_PX = int(GRID_SIZE_MM * DPI / 25.4)
 
 # A4 排版（左右留边）
 MARGIN = int(15 * DPI / 25.4)  # 1.5cm边距
-TITLE_AREA_HEIGHT = int(35 * DPI / 25.4)  # 标题区域高度 3.5cm
+TITLE_AREA_HEIGHT = int(15 * DPI / 25.4)  # 标题区域高度 3.5cm
 
 COLS = (A4_W - 2 * MARGIN) // GRID_SIZE_PX  # 自动算列数
 ROWS = (A4_H - 2 * MARGIN - TITLE_AREA_HEIGHT) // GRID_SIZE_PX  # 自动算行数
@@ -74,18 +74,18 @@ else:
 # 新增功能：选择每个字重复次数和练习格数
 try:
     repeat_count = input("每个字重复显示几次？(默认 1): ").strip()
-    repeat_count = int(repeat_count) if repeat_count else 1
-    if repeat_count < 1: repeat_count = 1
+    repeat_count = int(repeat_count) if repeat_count else 5
+    if repeat_count < 1: repeat_count = 5
 except ValueError:
     print("输入无效，默认重复 1 次")
-    repeat_count = 1
+    repeat_count = 5
 
 try:
     practice_count = input("每个字后面留几个练习格？(默认 0): ").strip()
-    practice_count = int(practice_count) if practice_count else 0
+    practice_count = int(practice_count) if practice_count else 4
 except ValueError:
     print("输入无效，默认不留练习格")
-    practice_count = 0
+    practice_count = 4
 
 # 构建最终要绘制的字符列表
 raw_chars = [c for c in text.strip() if c.strip()]
@@ -142,12 +142,28 @@ for page in range((len(chars_to_draw) + COLS * ROWS - 1) // (COLS * ROWS)):
             [gx, gy, gx + GRID_SIZE_PX, gy + GRID_SIZE_PX], outline=GRID_COLOR, width=2
         )
 
-        # 米字格虚线
+        # 米字格虚线（加粗并实现虚线效果）
         cx, cy = gx + GRID_SIZE_PX // 2, gy + GRID_SIZE_PX // 2
-        draw.line([gx, gy, gx + GRID_SIZE_PX, gy + GRID_SIZE_PX], fill=GRID_COLOR, width=1)
-        draw.line([gx + GRID_SIZE_PX, gy, gx, gy + GRID_SIZE_PX], fill=GRID_COLOR, width=1)
-        draw.line([cx, gy, cx, gy + GRID_SIZE_PX], fill=GRID_COLOR, width=1)
-        draw.line([gx, cy, gx + GRID_SIZE_PX, cy], fill=GRID_COLOR, width=1)
+        dash_gap = 10  # 虚线间距
+        line_width = 2 # 加粗一点
+
+        def draw_dashed_line(p1, p2, color, width):
+            x1, y1 = p1
+            x2, y2 = p2
+            length = ((x2 - x1)**2 + (y2 - y1)**2)**0.5
+            if length == 0: return
+            
+            dx, dy = (x2 - x1) / length, (y2 - y1) / length
+            for i in range(0, int(length), dash_gap * 2):
+                start = (x1 + dx * i, y1 + dy * i)
+                end = (x1 + dx * min(i + dash_gap, length), y1 + dy * min(i + dash_gap, length))
+                draw.line([start, end], fill=color, width=width)
+
+        # 绘制米字格内部虚线
+        draw_dashed_line((gx, gy), (gx + GRID_SIZE_PX, gy + GRID_SIZE_PX), GRID_COLOR, line_width)
+        draw_dashed_line((gx + GRID_SIZE_PX, gy), (gx, gy + GRID_SIZE_PX), GRID_COLOR, line_width)
+        draw_dashed_line((cx, gy), (cx, gy + GRID_SIZE_PX), GRID_COLOR, line_width)
+        draw_dashed_line((gx, cy), (gx + GRID_SIZE_PX, cy), GRID_COLOR, line_width)
 
         # 如果不是练习格，则绘制文字
         if c is not None:

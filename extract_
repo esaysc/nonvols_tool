@@ -1,0 +1,32 @@
+import pdfplumber
+import pandas as pd
+
+def extract_pdf_tables(pdf_path):
+    all_data = []
+    with pdfplumber.open(pdf_path) as pdf:
+        for i, page in enumerate(pdf.pages):
+            print(f"Processing page {i+1}...")
+            # Try to extract tables
+            tables = page.extract_tables()
+            for table in tables:
+                for row in table:
+                    # Clean row: remove None and newlines
+                    clean_row = [str(cell).replace('\n', '').strip() if cell else "" for cell in row]
+                    all_data.append(clean_row)
+            
+            # If no tables found, try to extract text as a fallback
+            if not tables:
+                text = page.extract_text()
+                if text:
+                    print(f"No tables found on page {i+1}, extracted text instead.")
+                    # We might need to parse this text later if tables fail
+    
+    if all_data:
+        df = pd.DataFrame(all_data)
+        df.to_excel("pdf_extracted_raw.xlsx", index=False)
+        print(f"Extracted {len(all_data)} rows to pdf_extracted_raw.xlsx")
+    else:
+        print("No data extracted from PDF.")
+
+if __name__ == "__main__":
+    extract_pdf_tables('贵平2022年大豆发放花名册扫描_1.pdf')
