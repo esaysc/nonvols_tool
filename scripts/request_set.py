@@ -13,9 +13,7 @@ from urllib3.exceptions import InsecureRequestWarning
 # 正确过滤业务无关的警告
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 warnings.filterwarnings("ignore", category=UserWarning)
-warnings.filterwarnings(
-    "ignore", category=InsecureRequestWarning
-)
+warnings.filterwarnings("ignore", category=InsecureRequestWarning)
 
 # ===================== 基础配置（业务固定值，请勿随意修改） =====================
 # 业务固定compid，与前端提交完全一致
@@ -83,6 +81,7 @@ QUERY_HEADERS = {
     "sec-ch-ua-platform": '"Windows"',
 }
 
+
 # ===================== 【新增】模板扫描与选择函数 =====================
 def scan_and_select_template():
     """
@@ -109,13 +108,13 @@ def scan_and_select_template():
         sys.exit(1)
 
     # 列出模板文件供用户选择
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("📋 可用模板文件列表")
-    print("="*60)
+    print("=" * 60)
     for idx, file_path in enumerate(template_files, 1):
         file_name = os.path.basename(file_path)
         print(f"  {idx}. {file_name}")
-    print("="*60)
+    print("=" * 60)
 
     # 让用户选择模板
     while True:
@@ -130,6 +129,7 @@ def scan_and_select_template():
                 print(f"⚠️  请输入1-{len(template_files)}之间的有效序号")
         except ValueError:
             print("⚠️  请输入有效的数字序号")
+
 
 # ===================== 1. Cookie加载与有效性校验 =====================
 def load_and_validate_cookie():
@@ -154,6 +154,7 @@ def load_and_validate_cookie():
         print(f"❌ 加载Cookie失败：{str(e)}")
         sys.exit(1)
 
+
 # ===================== 2. 读取STD_DATA.csv 填报标准数据（已适配模板选择） =====================
 def load_std_data(template_file_path):
     """读取填报标准数据，做格式清洗、合法性校验"""
@@ -168,7 +169,9 @@ def load_std_data(template_file_path):
         except Exception as e:
             continue
     if df is None:
-        print(f"❌ 模板文件 {template_file_path} 读取失败，请检查文件路径、编码、格式是否正确")
+        print(
+            f"❌ 模板文件 {template_file_path} 读取失败，请检查文件路径、编码、格式是否正确"
+        )
         sys.exit(1)
 
     # 数据清洗与校验
@@ -199,6 +202,7 @@ def load_std_data(template_file_path):
         print(f"⚠️  警告：以下字段不在接口允许范围内，已自动跳过：{invalid_fields}")
     print(f"✅ 有效填报字段加载完成，共 {len(std_data)} 个")
     return std_data
+
 
 # ===================== 3. 读取TB_LIST.csv 地块列表（适配无表头CSV） =====================
 def load_tb_list():
@@ -240,6 +244,7 @@ def load_tb_list():
     print(f"✅ 有效地块加载完成，共 {len(tb_list)} 个")
     return tb_list
 
+
 # ===================== 4. 核心安全环节：预览+手动二次确认 =====================
 def security_confirm(tb_list, std_data, selected_template):
     """安全确认环节，预览所有内容，手动确认后才允许提交"""
@@ -277,6 +282,7 @@ def security_confirm(tb_list, std_data, selected_template):
         sys.exit(0)
     print("\n✅ 已确认，开始批量提交...\n")
 
+
 # ===================== 5. 调用读取任务属性接口 =====================
 def query_task_attribute(session, tbid, taskid, cookie):
     """
@@ -287,18 +293,10 @@ def query_task_attribute(session, tbid, taskid, cookie):
         headers = QUERY_HEADERS.copy()
         headers["Cookie"] = cookie
 
-        data = {
-            "taskid": taskid,
-            "tbid": tbid,
-            "version": 36
-        }
+        data = {"taskid": taskid, "tbid": tbid, "version": 36}
 
         response = session.post(
-            QUERY_API_URL,
-            headers=headers,
-            data=data,
-            verify=False,
-            timeout=15
+            QUERY_API_URL, headers=headers, data=data, verify=False, timeout=15
         )
 
         if response.status_code == 200:
@@ -308,6 +306,7 @@ def query_task_attribute(session, tbid, taskid, cookie):
 
     except Exception as e:
         print(f"⚠️  读取接口请求失败（不影响提交）：{str(e)}")
+
 
 # ===================== 6. 构造请求体，与前端格式完全一致 =====================
 def build_request_body(tbid, taskid, std_data):
@@ -326,6 +325,7 @@ def build_request_body(tbid, taskid, std_data):
             item["numbervalue"] = std_data[field_code]
         body.append(item)
     return body
+
 
 # ===================== 7. 批量提交，带重试机制、异常处理、日志留存 =====================
 def batch_submit(tb_list, std_data, cookie):
@@ -349,7 +349,7 @@ def batch_submit(tb_list, std_data, cookie):
         query_task_attribute(session, tbid, taskid, cookie)
 
         # 读取后延迟 5-10 秒
-        wait_after_query = random.randint(3, 5)
+        wait_after_query = random.randint(1, 2)
         print(f"⏳ 读取完成，等待 {wait_after_query} 秒后开始提交...")
         time.sleep(wait_after_query)
 
@@ -409,7 +409,7 @@ def batch_submit(tb_list, std_data, cookie):
             fail_list.append((tbid, taskid, error_msg))
 
         # 提交后随机等待 5-20 秒
-        wait_after_submit = random.randint(2, 7)
+        wait_after_submit = random.randint(1, 2)
         print(f"⏳ 提交完成，等待 {wait_after_submit} 秒进入下一个...\n")
         time.sleep(wait_after_submit)
 
@@ -447,6 +447,7 @@ def batch_submit(tb_list, std_data, cookie):
         print(f"⚠️  保存日志失败：{str(e)}")
 
     return success_list, fail_list
+
 
 # ===================== 主程序入口 =====================
 if __name__ == "__main__":

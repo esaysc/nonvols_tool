@@ -264,3 +264,771 @@
 总地块数：1，成功：1，失败：0
 成功地块：
   tbid=148377240, taskid=1707388
+
+===== 提交日志 2026-05-20 17:39:36 =====
+使用模板：油菜-玉米.csv
+总地块数：9，成功：9，失败：0
+成功地块：
+  tbid=138533698, taskid=1707388
+  tbid=138533701, taskid=1707388
+  tbid=138533703, taskid=1707388
+  tbid=138533705, taskid=1707388
+  tbid=138533709, taskid=1707388
+  tbid=138533717, taskid=1707388
+  tbid=138533720, taskid=1707388
+  tbid=138533931, taskid=1707388
+  tbid=138533932, taskid=1707388
+
+===== 提交日志 2026-05-20 18:10:12 =====
+使用模板：蔬菜-果树.csv
+总地块数：20，成功：20，失败：0
+成功地块：
+  tbid=138533714, taskid=1707388
+  tbid=138533784, taskid=1707388
+  tbid=138533801, taskid=1707388
+  tbid=138533846, taskid=1707388
+  tbid=138533872, taskid=1707388
+  tbid=138533874, taskid=1707388
+  tbid=138533876, taskid=1707388
+  tbid=138533878, taskid=1707388
+  tbid=138533881, taskid=1707388
+  tbid=138533882, taskid=1707388
+  tbid=138533884, taskid=1707388
+  tbid=138533886, taskid=1707388
+  tbid=138533890, taskid=1707388
+  tbid=138533892, taskid=1707388
+  tbid=138533910, taskid=1707388
+  tbid=138533911, taskid=1707388
+  tbid=138533917, taskid=1707388
+  tbid=138533928, taskid=1707388
+  tbid=148167737, taskid=1707388
+  tbid=148167738, taskid=1707388
+
+===== 提交日志 2026-05-20 18:11:51 =====
+使用模板：蔬菜-蔬菜.csv
+总地块数：20，成功：20，失败：0
+成功地块：
+  tbid=138533606, taskid=1707388
+  tbid=138533608, taskid=1707388
+  tbid=138533637, taskid=1707388
+  tbid=138533771, taskid=1707388
+  tbid=138533785, taskid=1707388
+  tbid=138533789, taskid=1707388
+  tbid=138533794, taskid=1707388
+  tbid=138533798, taskid=1707388
+  tbid=138533799, taskid=1707388
+  tbid=138533840, taskid=1707388
+  tbid=138533845, taskid=1707388
+  tbid=138533870, taskid=1707388
+  tbid=138533871, taskid=1707388
+  tbid=138533879, taskid=1707388
+  tbid=138533880, taskid=1707388
+  tbid=138533905, taskid=1707388
+  tbid=138533908, taskid=1707388
+  tbid=138533916, taskid=1707388
+  tbid=138533918, taskid=1707388
+  tbid=138533920, taskid=1707388
+
+===== 提交日志 2026-05-20 18:12:21 =====
+使用模板：豆类-甘薯.csv
+总地块数：1，成功：1，失败：0
+成功地块：
+  tbid=138533877, taskid=1707388
+
+===== 提交日志 2026-05-20 18:12:58 =====
+使用模板：豆类-蔬菜-果树.csv
+总地块数：1，成功：1，失败：0
+成功地块：
+  tbid=138533639, taskid=1707388
+
+===== 提交日志 2026-05-20 18:13:22 =====
+使用模板：豌豆-蚕豆.csv
+总地块数：2，成功：2，失败：0
+成功地块：
+  tbid=138533859, taskid=1707388
+  tbid=138533888, taskid=1707388
+
+===== 提交日志 2026-05-20 18:13:54 =====
+使用模板：豆类-马铃薯.csv
+总地块数：6，成功：6，失败：0
+成功地块：
+  tbid=138533603, taskid=1707388
+  tbid=138533605, taskid=1707388
+  tbid=138533792, taskid=1707388
+  tbid=138533841, taskid=1707388
+  tbid=138533855, taskid=1707388
+  tbid=138533862, taskid=1707388
+
+===== 提交日志 2026-05-20 18:16:26 =====
+使用模板：油菜-玉米.csv
+总地块数：29，成功：29，失败：0
+成功地块：
+  tbid=148377240, taskid=1707388
+  tbid=149535790, taskid=1707388
+  tbid=149537555, taskid=1707388
+  tbid=149538288, taskid=1707388
+  tbid=149539557, taskid=1707388
+  tbid=149539558, taskid=1707388
+  tbid=149555501, taskid=1707388
+  tbid=149556576, taskid=1707388
+  tbid=149556908, taskid=1707388
+  tbid=149557222, taskid=1707388
+  tbid=149557450, taskid=1707388
+  tbid=149557781, taskid=1707388
+  tbid=149559457, taskid=1707388
+  tbid=149559940, taskid=1707388
+  tbid=149735791, taskid=1707388
+  tbid=149736245, taskid=1707388
+  tbid=149736567, taskid=1707388
+  tbid=149736839, taskid=1707388
+  tbid=149737235, taskid=1707388
+  tbid=149737546, taskid=1707388
+  tbid=149738325, taskid=1707388
+  tbid=149738464, taskid=1707388
+  tbid=149738735, taskid=1707388
+  tbid=149739063, taskid=1707388
+  tbid=149739752, taskid=1707388
+  tbid=149741343, taskid=1707388
+  tbid=149741684, taskid=1707388
+  tbid=149742484, taskid=1707388
+  tbid=149742765, taskid=1707388
+
+===== 提交日志 2026-05-20 18:22:27 =====
+使用模板：水浇地-豆类-蔬菜.csv
+总地块数：2，成功：2，失败：0
+成功地块：
+  tbid=138534270, taskid=1707389
+  tbid=138534271, taskid=1707389
+
+===== 提交日志 2026-05-20 18:24:15 =====
+使用模板：蔬菜-果树.csv
+总地块数：9，成功：9，失败：0
+成功地块：
+  tbid=138534272, taskid=1707389
+  tbid=148370974, taskid=1707389
+  tbid=148371162, taskid=1707389
+  tbid=148371433, taskid=1707389
+  tbid=148371521, taskid=1707389
+  tbid=148371801, taskid=1707389
+  tbid=148371917, taskid=1707389
+  tbid=148371995, taskid=1707389
+  tbid=148372166, taskid=1707389
+
+===== 提交日志 2026-05-20 18:29:54 =====
+使用模板：豆类-蔬菜-果树.csv
+总地块数：8，成功：8，失败：0
+成功地块：
+  tbid=148326670, taskid=1707390
+  tbid=148326754, taskid=1707390
+  tbid=148328348, taskid=1707390
+  tbid=148329893, taskid=1707390
+  tbid=148332113, taskid=1707390
+  tbid=148359154, taskid=1707390
+  tbid=148359311, taskid=1707390
+  tbid=148359912, taskid=1707390
+
+===== 提交日志 2026-05-20 18:30:36 =====
+使用模板：豆类-马铃薯.csv
+总地块数：8，成功：8，失败：0
+成功地块：
+  tbid=148326670, taskid=1707390
+  tbid=148326754, taskid=1707390
+  tbid=148328348, taskid=1707390
+  tbid=148329893, taskid=1707390
+  tbid=148332113, taskid=1707390
+  tbid=148359154, taskid=1707390
+  tbid=148359311, taskid=1707390
+  tbid=148359912, taskid=1707390
+
+===== 提交日志 2026-05-20 18:45:18 =====
+使用模板：豆类-甘薯.csv
+总地块数：47，成功：47，失败：0
+成功地块：
+  tbid=138535437, taskid=1707391
+  tbid=138535459, taskid=1707391
+  tbid=138535462, taskid=1707391
+  tbid=138535468, taskid=1707391
+  tbid=138535507, taskid=1707391
+  tbid=138535513, taskid=1707391
+  tbid=138535529, taskid=1707391
+  tbid=138535585, taskid=1707391
+  tbid=138535612, taskid=1707391
+  tbid=138535614, taskid=1707391
+  tbid=138535615, taskid=1707391
+  tbid=138535620, taskid=1707391
+  tbid=138535628, taskid=1707391
+  tbid=138535629, taskid=1707391
+  tbid=138535631, taskid=1707391
+  tbid=138535635, taskid=1707391
+  tbid=138535644, taskid=1707391
+  tbid=138535645, taskid=1707391
+  tbid=138535652, taskid=1707391
+  tbid=138535655, taskid=1707391
+  tbid=138535665, taskid=1707391
+  tbid=138535672, taskid=1707391
+  tbid=138535673, taskid=1707391
+  tbid=138535683, taskid=1707391
+  tbid=138535685, taskid=1707391
+  tbid=138535687, taskid=1707391
+  tbid=138535692, taskid=1707391
+  tbid=138535696, taskid=1707391
+  tbid=138535697, taskid=1707391
+  tbid=138535717, taskid=1707391
+  tbid=138535718, taskid=1707391
+  tbid=138535719, taskid=1707391
+  tbid=138535720, taskid=1707391
+  tbid=138535721, taskid=1707391
+  tbid=138535730, taskid=1707391
+  tbid=138535734, taskid=1707391
+  tbid=138535735, taskid=1707391
+  tbid=138535737, taskid=1707391
+  tbid=138535738, taskid=1707391
+  tbid=138535739, taskid=1707391
+  tbid=138535745, taskid=1707391
+  tbid=138535763, taskid=1707391
+  tbid=138535773, taskid=1707391
+  tbid=138535780, taskid=1707391
+  tbid=138535788, taskid=1707391
+  tbid=138535790, taskid=1707391
+  tbid=138535795, taskid=1707391
+
+===== 提交日志 2026-05-20 18:50:41 =====
+使用模板：蔬菜-果树.csv
+总地块数：37，成功：37，失败：0
+成功地块：
+  tbid=138535459, taskid=1707391
+  tbid=138535462, taskid=1707391
+  tbid=138535507, taskid=1707391
+  tbid=138535513, taskid=1707391
+  tbid=138535529, taskid=1707391
+  tbid=138535585, taskid=1707391
+  tbid=138535612, taskid=1707391
+  tbid=138535631, taskid=1707391
+  tbid=138535635, taskid=1707391
+  tbid=138535652, taskid=1707391
+  tbid=138535665, taskid=1707391
+  tbid=138535672, taskid=1707391
+  tbid=138535673, taskid=1707391
+  tbid=138535683, taskid=1707391
+  tbid=138535685, taskid=1707391
+  tbid=138535687, taskid=1707391
+  tbid=138535692, taskid=1707391
+  tbid=138535696, taskid=1707391
+  tbid=138535697, taskid=1707391
+  tbid=138535717, taskid=1707391
+  tbid=138535718, taskid=1707391
+  tbid=138535719, taskid=1707391
+  tbid=138535720, taskid=1707391
+  tbid=138535721, taskid=1707391
+  tbid=138535730, taskid=1707391
+  tbid=138535734, taskid=1707391
+  tbid=138535735, taskid=1707391
+  tbid=138535737, taskid=1707391
+  tbid=138535738, taskid=1707391
+  tbid=138535739, taskid=1707391
+  tbid=138535745, taskid=1707391
+  tbid=138535763, taskid=1707391
+  tbid=138535773, taskid=1707391
+  tbid=138535780, taskid=1707391
+  tbid=138535788, taskid=1707391
+  tbid=138535790, taskid=1707391
+  tbid=138535795, taskid=1707391
+
+===== 提交日志 2026-05-20 18:52:52 =====
+使用模板：豆类-果树.csv
+总地块数：25，成功：25，失败：0
+成功地块：
+  tbid=148300106, taskid=1707391
+  tbid=148300107, taskid=1707391
+  tbid=148300319, taskid=1707391
+  tbid=148300972, taskid=1707391
+  tbid=148301110, taskid=1707391
+  tbid=148301405, taskid=1707391
+  tbid=148308646, taskid=1707391
+  tbid=148309179, taskid=1707391
+  tbid=148313267, taskid=1707391
+  tbid=148313917, taskid=1707391
+  tbid=148314362, taskid=1707391
+  tbid=148316669, taskid=1707391
+  tbid=148317246, taskid=1707391
+  tbid=148318118, taskid=1707391
+  tbid=148318415, taskid=1707391
+  tbid=148318650, taskid=1707391
+  tbid=148318881, taskid=1707391
+  tbid=148319010, taskid=1707391
+  tbid=148319168, taskid=1707391
+  tbid=148319728, taskid=1707391
+  tbid=148321048, taskid=1707391
+  tbid=148322108, taskid=1707391
+  tbid=148322404, taskid=1707391
+  tbid=148324789, taskid=1707391
+  tbid=148325084, taskid=1707391
+
+===== 提交日志 2026-05-20 19:07:55 =====
+使用模板：豆类-果树.csv
+总地块数：79，成功：79，失败：0
+成功地块：
+  tbid=138529594, taskid=1707392
+  tbid=138529598, taskid=1707392
+  tbid=138529608, taskid=1707392
+  tbid=138529613, taskid=1707392
+  tbid=138529617, taskid=1707392
+  tbid=138529618, taskid=1707392
+  tbid=138529619, taskid=1707392
+  tbid=138529620, taskid=1707392
+  tbid=138529621, taskid=1707392
+  tbid=138529622, taskid=1707392
+  tbid=138529623, taskid=1707392
+  tbid=138529643, taskid=1707392
+  tbid=138529645, taskid=1707392
+  tbid=138529650, taskid=1707392
+  tbid=138529655, taskid=1707392
+  tbid=138529659, taskid=1707392
+  tbid=138529673, taskid=1707392
+  tbid=138529680, taskid=1707392
+  tbid=138529693, taskid=1707392
+  tbid=138529694, taskid=1707392
+  tbid=138529702, taskid=1707392
+  tbid=138529718, taskid=1707392
+  tbid=138529720, taskid=1707392
+  tbid=138529722, taskid=1707392
+  tbid=138529724, taskid=1707392
+  tbid=138529727, taskid=1707392
+  tbid=138529746, taskid=1707392
+  tbid=138529747, taskid=1707392
+  tbid=138529748, taskid=1707392
+  tbid=138529749, taskid=1707392
+  tbid=138529750, taskid=1707392
+  tbid=138529752, taskid=1707392
+  tbid=138529753, taskid=1707392
+  tbid=138529754, taskid=1707392
+  tbid=138529755, taskid=1707392
+  tbid=138529758, taskid=1707392
+  tbid=138529759, taskid=1707392
+  tbid=138529776, taskid=1707392
+  tbid=138529779, taskid=1707392
+  tbid=138529789, taskid=1707392
+  tbid=138529792, taskid=1707392
+  tbid=138529793, taskid=1707392
+  tbid=138529795, taskid=1707392
+  tbid=138529796, taskid=1707392
+  tbid=138529797, taskid=1707392
+  tbid=138529798, taskid=1707392
+  tbid=138529799, taskid=1707392
+  tbid=138529800, taskid=1707392
+  tbid=138529801, taskid=1707392
+  tbid=138529804, taskid=1707392
+  tbid=138529805, taskid=1707392
+  tbid=138529806, taskid=1707392
+  tbid=138529807, taskid=1707392
+  tbid=138529809, taskid=1707392
+  tbid=138529822, taskid=1707392
+  tbid=138529823, taskid=1707392
+  tbid=138529825, taskid=1707392
+  tbid=138529829, taskid=1707392
+  tbid=138529831, taskid=1707392
+  tbid=138529834, taskid=1707392
+  tbid=138529846, taskid=1707392
+  tbid=138529847, taskid=1707392
+  tbid=138529851, taskid=1707392
+  tbid=138529854, taskid=1707392
+  tbid=138529856, taskid=1707392
+  tbid=138529857, taskid=1707392
+  tbid=138529863, taskid=1707392
+  tbid=138529868, taskid=1707392
+  tbid=138529870, taskid=1707392
+  tbid=138529874, taskid=1707392
+  tbid=138529876, taskid=1707392
+  tbid=138529896, taskid=1707392
+  tbid=138529929, taskid=1707392
+  tbid=138529930, taskid=1707392
+  tbid=138529932, taskid=1707392
+  tbid=138529935, taskid=1707392
+  tbid=138529941, taskid=1707392
+  tbid=138529946, taskid=1707392
+  tbid=138529948, taskid=1707392
+
+===== 提交日志 2026-05-20 19:15:38 =====
+使用模板：蔬菜-果树.csv
+总地块数：18，成功：18，失败：0
+成功地块：
+  tbid=148115893, taskid=1707392
+  tbid=148115896, taskid=1707392
+  tbid=148115897, taskid=1707392
+  tbid=148178333, taskid=1707392
+  tbid=148267541, taskid=1707392
+  tbid=148270029, taskid=1707392
+  tbid=148270350, taskid=1707392
+  tbid=148275131, taskid=1707392
+  tbid=148276800, taskid=1707392
+  tbid=148277053, taskid=1707392
+  tbid=148277533, taskid=1707392
+  tbid=148279184, taskid=1707392
+  tbid=148279792, taskid=1707392
+  tbid=148290947, taskid=1707392
+  tbid=148292061, taskid=1707392
+  tbid=148292365, taskid=1707392
+  tbid=148292898, taskid=1707392
+  tbid=148293974, taskid=1707392
+
+===== 提交日志 2026-05-20 19:25:55 =====
+使用模板：豆类-马铃薯.csv
+总地块数：11，成功：11，失败：0
+成功地块：
+  tbid=138530212, taskid=1707393
+  tbid=138530237, taskid=1707393
+  tbid=138530266, taskid=1707393
+  tbid=138530288, taskid=1707393
+  tbid=138530297, taskid=1707393
+  tbid=138530298, taskid=1707393
+  tbid=138530365, taskid=1707393
+  tbid=138530386, taskid=1707393
+  tbid=138530501, taskid=1707393
+  tbid=138530503, taskid=1707393
+  tbid=148259725, taskid=1707393
+
+===== 提交日志 2026-05-20 19:27:42 =====
+使用模板：其他水田-油菜-玉米.csv
+总地块数：3，成功：3，失败：0
+成功地块：
+  tbid=138530203, taskid=1707393
+  tbid=138530520, taskid=1707393
+  tbid=138530521, taskid=1707393
+
+===== 提交日志 2026-05-20 19:35:49 =====
+使用模板：豆类-果树.csv
+总地块数：7，成功：7，失败：0
+成功地块：
+  tbid=138531066, taskid=1707394
+  tbid=138531070, taskid=1707394
+  tbid=138531074, taskid=1707394
+  tbid=138531076, taskid=1707394
+  tbid=138531081, taskid=1707394
+  tbid=138531091, taskid=1707394
+  tbid=138531206, taskid=1707394
+
+===== 提交日志 2026-05-20 19:44:22 =====
+使用模板：豆类-果树.csv
+总地块数：97，成功：97，失败：0
+成功地块：
+  tbid=148300106, taskid=1707391
+  tbid=148300107, taskid=1707391
+  tbid=148300319, taskid=1707391
+  tbid=148300972, taskid=1707391
+  tbid=148301110, taskid=1707391
+  tbid=148301405, taskid=1707391
+  tbid=148308646, taskid=1707391
+  tbid=148309179, taskid=1707391
+  tbid=148313267, taskid=1707391
+  tbid=148313917, taskid=1707391
+  tbid=148314362, taskid=1707391
+  tbid=148316669, taskid=1707391
+  tbid=148317246, taskid=1707391
+  tbid=148318118, taskid=1707391
+  tbid=148318415, taskid=1707391
+  tbid=148318650, taskid=1707391
+  tbid=148318881, taskid=1707391
+  tbid=148319010, taskid=1707391
+  tbid=148319168, taskid=1707391
+  tbid=148319728, taskid=1707391
+  tbid=148321048, taskid=1707391
+  tbid=148322108, taskid=1707391
+  tbid=148322404, taskid=1707391
+  tbid=148324789, taskid=1707391
+  tbid=148325084, taskid=1707391
+  tbid=138529594, taskid=1707392
+  tbid=138529598, taskid=1707392
+  tbid=138529608, taskid=1707392
+  tbid=138529613, taskid=1707392
+  tbid=138529617, taskid=1707392
+  tbid=138529618, taskid=1707392
+  tbid=138529619, taskid=1707392
+  tbid=138529620, taskid=1707392
+  tbid=138529621, taskid=1707392
+  tbid=138529622, taskid=1707392
+  tbid=138529623, taskid=1707392
+  tbid=138529643, taskid=1707392
+  tbid=138529645, taskid=1707392
+  tbid=138529650, taskid=1707392
+  tbid=138529655, taskid=1707392
+  tbid=138529659, taskid=1707392
+  tbid=138529673, taskid=1707392
+  tbid=138529680, taskid=1707392
+  tbid=138529693, taskid=1707392
+  tbid=138529694, taskid=1707392
+  tbid=138529702, taskid=1707392
+  tbid=138529718, taskid=1707392
+  tbid=138529720, taskid=1707392
+  tbid=138529722, taskid=1707392
+  tbid=138529724, taskid=1707392
+  tbid=138529727, taskid=1707392
+  tbid=138529747, taskid=1707392
+  tbid=138529748, taskid=1707392
+  tbid=138529749, taskid=1707392
+  tbid=138529750, taskid=1707392
+  tbid=138529752, taskid=1707392
+  tbid=138529753, taskid=1707392
+  tbid=138529754, taskid=1707392
+  tbid=138529755, taskid=1707392
+  tbid=138529758, taskid=1707392
+  tbid=138529759, taskid=1707392
+  tbid=138529776, taskid=1707392
+  tbid=138529779, taskid=1707392
+  tbid=138529789, taskid=1707392
+  tbid=138529792, taskid=1707392
+  tbid=138529793, taskid=1707392
+  tbid=138529795, taskid=1707392
+  tbid=138529796, taskid=1707392
+  tbid=138529799, taskid=1707392
+  tbid=138529800, taskid=1707392
+  tbid=138529804, taskid=1707392
+  tbid=138529807, taskid=1707392
+  tbid=138529809, taskid=1707392
+  tbid=138529822, taskid=1707392
+  tbid=138529823, taskid=1707392
+  tbid=138529825, taskid=1707392
+  tbid=138529829, taskid=1707392
+  tbid=138529831, taskid=1707392
+  tbid=138529834, taskid=1707392
+  tbid=138529846, taskid=1707392
+  tbid=138529847, taskid=1707392
+  tbid=138529851, taskid=1707392
+  tbid=138529854, taskid=1707392
+  tbid=138529856, taskid=1707392
+  tbid=138529857, taskid=1707392
+  tbid=138529863, taskid=1707392
+  tbid=138529868, taskid=1707392
+  tbid=138529870, taskid=1707392
+  tbid=138529874, taskid=1707392
+  tbid=138529876, taskid=1707392
+  tbid=138529896, taskid=1707392
+  tbid=138529929, taskid=1707392
+  tbid=138529932, taskid=1707392
+  tbid=138529935, taskid=1707392
+  tbid=138529941, taskid=1707392
+  tbid=138529946, taskid=1707392
+  tbid=138529948, taskid=1707392
+
+===== 提交日志 2026-05-20 19:51:43 =====
+使用模板：豆类-果树.csv
+总地块数：58，成功：58，失败：0
+成功地块：
+  tbid=138530896, taskid=1707394
+  tbid=138530898, taskid=1707394
+  tbid=138530899, taskid=1707394
+  tbid=138530903, taskid=1707394
+  tbid=138530904, taskid=1707394
+  tbid=138530910, taskid=1707394
+  tbid=138530912, taskid=1707394
+  tbid=138530922, taskid=1707394
+  tbid=138530924, taskid=1707394
+  tbid=138530928, taskid=1707394
+  tbid=138530931, taskid=1707394
+  tbid=138530953, taskid=1707394
+  tbid=138530954, taskid=1707394
+  tbid=138530961, taskid=1707394
+  tbid=138530968, taskid=1707394
+  tbid=138530991, taskid=1707394
+  tbid=138530993, taskid=1707394
+  tbid=138531012, taskid=1707394
+  tbid=138531024, taskid=1707394
+  tbid=138531030, taskid=1707394
+  tbid=138531033, taskid=1707394
+  tbid=138531034, taskid=1707394
+  tbid=138531039, taskid=1707394
+  tbid=138531040, taskid=1707394
+  tbid=138531041, taskid=1707394
+  tbid=138531042, taskid=1707394
+  tbid=138531043, taskid=1707394
+  tbid=138531045, taskid=1707394
+  tbid=138531047, taskid=1707394
+  tbid=138531050, taskid=1707394
+  tbid=138531052, taskid=1707394
+  tbid=138531055, taskid=1707394
+  tbid=138531057, taskid=1707394
+  tbid=138531062, taskid=1707394
+  tbid=138531063, taskid=1707394
+  tbid=138531097, taskid=1707394
+  tbid=138531119, taskid=1707394
+  tbid=138531120, taskid=1707394
+  tbid=138531128, taskid=1707394
+  tbid=138531129, taskid=1707394
+  tbid=138531131, taskid=1707394
+  tbid=138531133, taskid=1707394
+  tbid=138531135, taskid=1707394
+  tbid=138531152, taskid=1707394
+  tbid=138531188, taskid=1707394
+  tbid=138531202, taskid=1707394
+  tbid=138531204, taskid=1707394
+  tbid=138531211, taskid=1707394
+  tbid=138531212, taskid=1707394
+  tbid=138531213, taskid=1707394
+  tbid=138531216, taskid=1707394
+  tbid=138531220, taskid=1707394
+  tbid=148248829, taskid=1707394
+  tbid=148248976, taskid=1707394
+  tbid=148249259, taskid=1707394
+  tbid=148249686, taskid=1707394
+  tbid=148249868, taskid=1707394
+  tbid=148253301, taskid=1707394
+
+===== 提交日志 2026-05-20 20:01:56 =====
+使用模板：豆类-果树.csv
+总地块数：19，成功：19，失败：0
+成功地块：
+  tbid=138531586, taskid=1707395
+  tbid=138531755, taskid=1707395
+  tbid=138531767, taskid=1707395
+  tbid=138531803, taskid=1707395
+  tbid=138531926, taskid=1707395
+  tbid=138531951, taskid=1707395
+  tbid=138531955, taskid=1707395
+  tbid=148208830, taskid=1707395
+  tbid=148209476, taskid=1707395
+  tbid=148216854, taskid=1707395
+  tbid=148216909, taskid=1707395
+  tbid=148216965, taskid=1707395
+  tbid=148217245, taskid=1707395
+  tbid=148246680, taskid=1707395
+  tbid=148247121, taskid=1707395
+  tbid=148247292, taskid=1707395
+  tbid=148247786, taskid=1707395
+  tbid=148247843, taskid=1707395
+  tbid=148248032, taskid=1707395
+
+===== 提交日志 2026-05-20 20:03:33 =====
+使用模板：STD_DATA.csv
+总地块数：5，成功：5，失败：0
+成功地块：
+  tbid=148208909, taskid=1707395
+  tbid=148216769, taskid=1707395
+  tbid=148216877, taskid=1707395
+  tbid=148217343, taskid=1707395
+  tbid=148246975, taskid=1707395
+
+===== 提交日志 2026-05-20 20:07:09 =====
+使用模板：其他水田-油菜-玉米.csv
+总地块数：10，成功：10，失败：0
+成功地块：
+  tbid=138532382, taskid=1707396
+  tbid=138532391, taskid=1707396
+  tbid=138532406, taskid=1707396
+  tbid=138532412, taskid=1707396
+  tbid=138532413, taskid=1707396
+  tbid=138532414, taskid=1707396
+  tbid=138532420, taskid=1707396
+  tbid=138532422, taskid=1707396
+  tbid=138532434, taskid=1707396
+  tbid=138532616, taskid=1707396
+
+===== 提交日志 2026-05-20 20:08:08 =====
+使用模板：其他水田-油菜-玉米.csv
+总地块数：11，成功：11，失败：0
+成功地块：
+  tbid=138532528, taskid=1707396
+  tbid=138532533, taskid=1707396
+  tbid=138532600, taskid=1707396
+  tbid=138532609, taskid=1707396
+  tbid=148151966, taskid=1707396
+  tbid=148151967, taskid=1707396
+  tbid=148152819, taskid=1707396
+  tbid=148185790, taskid=1707396
+  tbid=148187408, taskid=1707396
+  tbid=148187409, taskid=1707396
+  tbid=149665598, taskid=1707396
+
+===== 提交日志 2026-05-20 20:13:23 =====
+使用模板：豆类-甘薯.csv
+总地块数：47，成功：47，失败：0
+成功地块：
+  tbid=138532329, taskid=1707396
+  tbid=138532331, taskid=1707396
+  tbid=138532336, taskid=1707396
+  tbid=138532338, taskid=1707396
+  tbid=138532340, taskid=1707396
+  tbid=138532353, taskid=1707396
+  tbid=138532355, taskid=1707396
+  tbid=138532356, taskid=1707396
+  tbid=138532358, taskid=1707396
+  tbid=138532359, taskid=1707396
+  tbid=138532360, taskid=1707396
+  tbid=138532365, taskid=1707396
+  tbid=138532445, taskid=1707396
+  tbid=138532482, taskid=1707396
+  tbid=138532484, taskid=1707396
+  tbid=138532485, taskid=1707396
+  tbid=138532487, taskid=1707396
+  tbid=138532498, taskid=1707396
+  tbid=138532500, taskid=1707396
+  tbid=138532526, taskid=1707396
+  tbid=138532542, taskid=1707396
+  tbid=138532543, taskid=1707396
+  tbid=138532544, taskid=1707396
+  tbid=138532545, taskid=1707396
+  tbid=138532546, taskid=1707396
+  tbid=138532547, taskid=1707396
+  tbid=138532548, taskid=1707396
+  tbid=138532549, taskid=1707396
+  tbid=138532550, taskid=1707396
+  tbid=138532572, taskid=1707396
+  tbid=138532581, taskid=1707396
+  tbid=138532582, taskid=1707396
+  tbid=138532589, taskid=1707396
+  tbid=138532590, taskid=1707396
+  tbid=138532593, taskid=1707396
+  tbid=138532607, taskid=1707396
+  tbid=138532614, taskid=1707396
+  tbid=138532621, taskid=1707396
+  tbid=138532640, taskid=1707396
+  tbid=138532642, taskid=1707396
+  tbid=138532644, taskid=1707396
+  tbid=138532655, taskid=1707396
+  tbid=138532659, taskid=1707396
+  tbid=138532660, taskid=1707396
+  tbid=138532663, taskid=1707396
+  tbid=138532672, taskid=1707396
+  tbid=138532676, taskid=1707396
+
+===== 提交日志 2026-05-20 20:16:23 =====
+使用模板：豌豆-蚕豆.csv
+总地块数：26，成功：26，失败：0
+成功地块：
+  tbid=148148347, taskid=1707396
+  tbid=148148348, taskid=1707396
+  tbid=148148349, taskid=1707396
+  tbid=148151968, taskid=1707396
+  tbid=148152811, taskid=1707396
+  tbid=148152812, taskid=1707396
+  tbid=148152813, taskid=1707396
+  tbid=148152815, taskid=1707396
+  tbid=148152816, taskid=1707396
+  tbid=148152817, taskid=1707396
+  tbid=148152818, taskid=1707396
+  tbid=148164857, taskid=1707396
+  tbid=148165816, taskid=1707396
+  tbid=148165817, taskid=1707396
+  tbid=148185669, taskid=1707396
+  tbid=148187407, taskid=1707396
+  tbid=148187410, taskid=1707396
+  tbid=148206754, taskid=1707396
+  tbid=148206755, taskid=1707396
+  tbid=148206837, taskid=1707396
+  tbid=148207001, taskid=1707396
+  tbid=148207247, taskid=1707396
+  tbid=149607535, taskid=1707396
+  tbid=149607698, taskid=1707396
+  tbid=149607901, taskid=1707396
+  tbid=149608206, taskid=1707396
+
+===== 提交日志 2026-05-20 20:21:19 =====
+使用模板：豌豆-蚕豆.csv
+总地块数：8，成功：8，失败：0
+成功地块：
+  tbid=138532950, taskid=1707399
+  tbid=138532961, taskid=1707399
+  tbid=138532974, taskid=1707399
+  tbid=138533004, taskid=1707399
+  tbid=148201402, taskid=1707399
+  tbid=148205398, taskid=1707399
+  tbid=148205521, taskid=1707399
+  tbid=148205685, taskid=1707399
