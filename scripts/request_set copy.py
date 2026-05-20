@@ -4,9 +4,7 @@ import time
 import pandas as pd
 import sys
 import warnings
-import random
-import os
-import glob
+import random  # 新增随机数模块
 from requests.exceptions import RequestException, Timeout, SSLError
 from urllib3.exceptions import InsecureRequestWarning
 
@@ -15,18 +13,13 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 warnings.filterwarnings("ignore", category=UserWarning)
 warnings.filterwarnings(
     "ignore", category=InsecureRequestWarning
-)
+)  # 适配verify=False的SSL警告
 
 # ===================== 基础配置（业务固定值，请勿随意修改） =====================
 # 业务固定compid，与前端提交完全一致
 COMP_ID = 10046
 # 接口地址，与前端完全一致
 API_URL = "https://surveysc.iearthtime.com:5088/surveysc/api/restUploadFieldscreenForTB?version=36&hasError=false&skipResponse=true"
-# 读取任务属性接口
-QUERY_API_URL = "https://surveysc.iearthtime.com:5088/surveysc/api/restFindTaskAttributeByTaskidForClassify"
-# 【新增】模板文件存放目录
-TEMPLATE_DIR = "std_templates"
-
 # 字段类型映射，与前端接口要求完全对齐
 FIELD_TYPE_MAP = {
     "10818": "string",
@@ -63,73 +56,6 @@ REQUEST_HEADERS = {
     "X-Requested-With": "XMLHttpRequest",
 }
 
-# 读取接口专用请求头（application/x-www-form-urlencoded）
-QUERY_HEADERS = {
-    "Accept": "*/*",
-    "Accept-Encoding": "gzip, deflate, br, zstd",
-    "Accept-Language": "zh-CN,zh;q=0.9",
-    "Connection": "keep-alive",
-    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-    "Host": "surveysc.iearthtime.com:5088",
-    "Origin": "https://surveysc.iearthtime.com:5088",
-    "Referer": "https://surveysc.iearthtime.com:5088/surveysc/mapClassifyTaskDetail.html",
-    "Sec-Fetch-Dest": "empty",
-    "Sec-Fetch-Mode": "cors",
-    "Sec-Fetch-Site": "same-origin",
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
-    "X-Requested-With": "XMLHttpRequest",
-    "sec-ch-ua": '"Not(A:Brand";v="8", "Chromium";v="144", "Google Chrome";v="144"',
-    "sec-ch-ua-mobile": "?0",
-    "sec-ch-ua-platform": '"Windows"',
-}
-
-# ===================== 【新增】模板扫描与选择函数 =====================
-def scan_and_select_template():
-    """
-    扫描模板目录，列出所有CSV文件，让用户选择要使用的模板
-    返回：选中的模板文件路径
-    """
-    # 自动创建模板目录（如果不存在）
-    if not os.path.exists(TEMPLATE_DIR):
-        os.makedirs(TEMPLATE_DIR)
-        print(f"✅ 已自动创建模板目录：{TEMPLATE_DIR}，请将您的模板CSV文件放入此目录")
-
-    # 扫描模板目录下的所有CSV文件
-    template_files = glob.glob(os.path.join(TEMPLATE_DIR, "*.csv"))
-    # 同时兼容根目录的STD_DATA.csv作为备选
-    root_default_file = "STD_DATA.csv"
-    if os.path.exists(root_default_file):
-        template_files.insert(0, root_default_file)
-
-    # 去重（避免根目录和模板目录有同名文件）
-    template_files = list(dict.fromkeys(template_files))
-
-    if not template_files:
-        print(f"❌ 未找到任何模板CSV文件，请将文件放入 {TEMPLATE_DIR} 目录或当前根目录")
-        sys.exit(1)
-
-    # 列出模板文件供用户选择
-    print("\n" + "="*60)
-    print("📋 可用模板文件列表")
-    print("="*60)
-    for idx, file_path in enumerate(template_files, 1):
-        file_name = os.path.basename(file_path)
-        print(f"  {idx}. {file_name}")
-    print("="*60)
-
-    # 让用户选择模板
-    while True:
-        try:
-            select_input = input("请输入要使用的模板序号：").strip()
-            select_idx = int(select_input)
-            if 1 <= select_idx <= len(template_files):
-                selected_file = template_files[select_idx - 1]
-                print(f"✅ 已选择模板：{os.path.basename(selected_file)}")
-                return selected_file
-            else:
-                print(f"⚠️  请输入1-{len(template_files)}之间的有效序号")
-        except ValueError:
-            print("⚠️  请输入有效的数字序号")
 
 # ===================== 1. Cookie加载与有效性校验 =====================
 def load_and_validate_cookie():
@@ -154,21 +80,22 @@ def load_and_validate_cookie():
         print(f"❌ 加载Cookie失败：{str(e)}")
         sys.exit(1)
 
-# ===================== 2. 读取STD_DATA.csv 填报标准数据（已适配模板选择） =====================
-def load_std_data(template_file_path):
+
+# ===================== 2. 读取STD_DATA.csv 填报标准数据 =====================
+def load_std_data():
     """读取填报标准数据，做格式清洗、合法性校验"""
     # 兼容多种编码，优先utf-8，其次gbk、gb2312
     encodings = ["utf-8", "gbk", "gb2312", "utf-8-sig"]
     df = None
     for enc in encodings:
         try:
-            df = pd.read_csv(template_file_path, dtype=str, encoding=enc)
-            print(f"✅ 模板文件读取成功，编码：{enc}")
+            df = pd.read_csv("STD_DATA.csv", dtype=str, encoding=enc)
+            print(f"✅ STD_DATA.csv 读取成功，编码：{enc}")
             break
         except Exception as e:
             continue
     if df is None:
-        print(f"❌ 模板文件 {template_file_path} 读取失败，请检查文件路径、编码、格式是否正确")
+        print("❌ STD_DATA.csv 读取失败，请检查文件路径、编码、格式是否正确")
         sys.exit(1)
 
     # 数据清洗与校验
@@ -193,12 +120,13 @@ def load_std_data(template_file_path):
 
     # 校验结果
     if not std_data:
-        print("❌ 未读取到有效填报字段，请检查模板文件格式是否正确")
+        print("❌ 未读取到有效填报字段，请检查STD_DATA.csv格式是否正确")
         sys.exit(1)
     if invalid_fields:
         print(f"⚠️  警告：以下字段不在接口允许范围内，已自动跳过：{invalid_fields}")
     print(f"✅ 有效填报字段加载完成，共 {len(std_data)} 个")
     return std_data
+
 
 # ===================== 3. 读取TB_LIST.csv 地块列表（适配无表头CSV） =====================
 def load_tb_list():
@@ -240,15 +168,13 @@ def load_tb_list():
     print(f"✅ 有效地块加载完成，共 {len(tb_list)} 个")
     return tb_list
 
+
 # ===================== 4. 核心安全环节：预览+手动二次确认 =====================
-def security_confirm(tb_list, std_data, selected_template):
+def security_confirm(tb_list, std_data):
     """安全确认环节，预览所有内容，手动确认后才允许提交"""
     print("\n" + "=" * 60)
     print("🔒 【安全确认环节】请仔细核对以下所有信息，无误后再确认提交")
     print("=" * 60)
-
-    # 打印选中的模板
-    print(f"\n📌 当前使用的模板：{os.path.basename(selected_template)}")
 
     # 打印地块清单，超过10个仅打印前10个，避免控制台溢出
     print(f"\n📋 要提交的地块清单（共 {len(tb_list)} 个）：")
@@ -277,39 +203,8 @@ def security_confirm(tb_list, std_data, selected_template):
         sys.exit(0)
     print("\n✅ 已确认，开始批量提交...\n")
 
-# ===================== 5. 调用读取任务属性接口 =====================
-def query_task_attribute(session, tbid, taskid, cookie):
-    """
-    每次提交前调用：读取任务属性接口
-    参数：taskid=xxx&tbid=xxx&version=36
-    """
-    try:
-        headers = QUERY_HEADERS.copy()
-        headers["Cookie"] = cookie
 
-        data = {
-            "taskid": taskid,
-            "tbid": tbid,
-            "version": 36
-        }
-
-        response = session.post(
-            QUERY_API_URL,
-            headers=headers,
-            data=data,
-            verify=False,
-            timeout=15
-        )
-
-        if response.status_code == 200:
-            print(f"✅ 读取任务属性成功")
-        else:
-            print(f"⚠️  读取接口返回状态码：{response.status_code}")
-
-    except Exception as e:
-        print(f"⚠️  读取接口请求失败（不影响提交）：{str(e)}")
-
-# ===================== 6. 构造请求体，与前端格式完全一致 =====================
+# ===================== 5. 构造请求体，与前端格式完全一致 =====================
 def build_request_body(tbid, taskid, std_data):
     """构造符合接口要求的请求体，与前端提交格式100%一致"""
     body = []
@@ -327,7 +222,8 @@ def build_request_body(tbid, taskid, std_data):
         body.append(item)
     return body
 
-# ===================== 7. 批量提交，带重试机制、异常处理、日志留存 =====================
+
+# ===================== 6. 批量提交，带重试机制、异常处理、日志留存 =====================
 def batch_submit(tb_list, std_data, cookie):
     """批量提交，带重试机制、异常处理、结果统计"""
     # 初始化Session，保持长连接，与请求头keep-alive匹配
@@ -342,25 +238,15 @@ def batch_submit(tb_list, std_data, cookie):
     total_count = len(tb_list)
 
     for idx, (tbid, taskid) in enumerate(tb_list, 1):
-        print(f"[{idx}/{total_count}] 准备提交 tbid={tbid}, taskid={taskid}")
-
-        # 先读接口
-        print(f"🔍 先调用读取任务属性接口...")
-        query_task_attribute(session, tbid, taskid, cookie)
-
-        # 读取后延迟 5-10 秒
-        wait_after_query = random.randint(3, 5)
-        print(f"⏳ 读取完成，等待 {wait_after_query} 秒后开始提交...")
-        time.sleep(wait_after_query)
-
-        # 开始构造提交
+        print(f"[{idx}/{total_count}] 正在提交 tbid={tbid}, taskid={taskid}")
+        # 构造请求体
         request_body = build_request_body(tbid, taskid, std_data)
         if not request_body:
             print(f"❌ 无有效填报数据，跳过该地块\n")
             fail_list.append((tbid, taskid, "无有效填报数据"))
             continue
 
-        # 提交逻辑，带1次重试
+        # 提交逻辑，带1次重试，应对网络波动
         retry_count = 0
         max_retry = 1
         submit_success = False
@@ -372,7 +258,7 @@ def batch_submit(tb_list, std_data, cookie):
                     json=request_body,
                     headers=request_headers,
                     verify=False,
-                    timeout=25,
+                    timeout=25,  # 延长超时时间，应对网络波动
                 )
                 # 解析响应结果
                 if response.status_code == 200:
@@ -383,10 +269,10 @@ def batch_submit(tb_list, std_data, cookie):
                         else:
                             error_msg = f"接口返回失败：{response_json.get('message', '无错误信息')}"
                     except:
-                        # 非JSON响应，按成功处理
+                        # 非JSON响应，按成功处理（符合接口skipResponse=true的设计）
                         submit_success = True
                 else:
-                    error_msg = f"HTTP状态码错误：{response.status_code}"
+                    error_msg = f"HTTP状态码错误：{response.status_code}，响应内容：{response.text[:200]}"
             except Timeout:
                 error_msg = "请求超时，网络波动"
                 retry_count += 1
@@ -408,10 +294,10 @@ def batch_submit(tb_list, std_data, cookie):
             print(f"❌ 提交失败：{error_msg}\n")
             fail_list.append((tbid, taskid, error_msg))
 
-        # 提交后随机等待 5-20 秒
-        wait_after_submit = random.randint(2, 7)
-        print(f"⏳ 提交完成，等待 {wait_after_submit} 秒进入下一个...\n")
-        time.sleep(wait_after_submit)
+        # 核心修改：5-20秒随机延迟，完全模拟真人操作节奏
+        wait_seconds = random.randint(5, 20)
+        print(f"⏳ 随机等待 {wait_seconds} 秒...\n")
+        time.sleep(wait_seconds)
 
     # 最终结果统计
     print("=" * 60)
@@ -430,7 +316,6 @@ def batch_submit(tb_list, std_data, cookie):
     try:
         with open("submit_log.txt", "a", encoding="utf-8") as f:
             f.write(f"\n===== 提交日志 {time.strftime('%Y-%m-%d %H:%M:%S')} =====\n")
-            f.write(f"使用模板：{os.path.basename(selected_template_file)}\n")
             f.write(
                 f"总地块数：{total_count}，成功：{len(success_list)}，失败：{len(fail_list)}\n"
             )
@@ -448,21 +333,20 @@ def batch_submit(tb_list, std_data, cookie):
 
     return success_list, fail_list
 
+
 # ===================== 主程序入口 =====================
 if __name__ == "__main__":
     print("🔹 地块批量填报程序启动，已加载全量安全校验机制")
-    # 1. 扫描并选择模板文件
-    selected_template_file = scan_and_select_template()
-    # 2. 加载并校验Cookie
+    # 1. 加载并校验Cookie
     valid_cookie = load_and_validate_cookie()
-    # 3. 加载选中的模板填报数据
-    standard_data = load_std_data(selected_template_file)
-    # 4. 加载地块列表
+    # 2. 加载填报标准数据
+    standard_data = load_std_data()
+    # 3. 加载地块列表（已适配无表头CSV）
     target_tb_list = load_tb_list()
-    # 5. 安全确认环节
-    security_confirm(target_tb_list, standard_data, selected_template_file)
-    # 6. 批量提交
+    # 4. 安全确认环节
+    security_confirm(target_tb_list, standard_data)
+    # 5. 批量提交
     batch_submit(target_tb_list, standard_data, valid_cookie)
-    # 7. 程序结束
+    # 6. 程序结束
     print("\n🔹 程序执行完成，正常退出")
     sys.exit(0)

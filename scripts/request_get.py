@@ -20,8 +20,8 @@ print(f"已加载 Cookie: {'成功' if YOUR_COOKIE else '未找到或为空'}")
 # 接口信息
 url = "https://surveysc.iearthtime.com:5088/surveysc/api/restFindTaskAttributeByTaskidForClassify"
 data = {
-    "taskid": "1707383",
-    "tbid": "138541433",
+    "taskid": "1707386",
+    "tbid": "148405871",
     "version": "36"
 }
 
